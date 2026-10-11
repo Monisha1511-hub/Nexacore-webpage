@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexaCore | Digital Innovation</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,sans-serif;
+  background:#080d24;color:#fff;
+  line-height:1.6
+}
+a{text-decoration:none;color:inherit}
+.container{width:90%;max-width:1100px;margin:auto}
+
+/* NAVIGATION */
+header{
+  background:#0b1230;
+  border-bottom:1px solid #283657;
+  position:sticky;top:0;z-index:10
+}
+nav{
+  min-height:70px;display:flex;
+  justify-content:space-between;align-items:center;
+  gap:20px
+}
+.logo{font-size:25px;font-weight:bold}
+.logo span{color:#16d9f5}
+.links{display:flex;gap:22px}
+.links a{color:#c5cce1}
+.links a:hover{color:#16d9f5}
+button{cursor:pointer;font:inherit}
+.theme{
+  padding:9px 12px;border:1px solid #394769;
+  background:#182345;color:white;border-radius:10px
+}
+
+/* HERO */
+.hero{
+  padding:90px 0;
+  background:radial-gradient(ellipse at 90% 20%,#174b9c80,transparent 40%),
+  radial-gradient(ellipse at 10% 10%,#743bce60,transparent 40%)
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:40px;align-items:center
+}
+.tag{
+  display:inline-block;padding:6px 14px;
+  border:1px solid #5142a9;border-radius:25px;
+  color:#8feaff;font-size:13px
+}
+h1{font-size:clamp(40px,5vw,65px);line-height:1.1;margin:22px 0}
+.gradient{
+  background:linear-gradient(90deg,#a276ff,#13d6f5);
+  color:transparent;background-clip:text
+}
+.hero p{color:#b9c4df;font-size:17px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}
+.btn{
+  display:inline-block;padding:12px 20px;
+  border-radius:30px;background:linear-gradient(90deg,#8645ff,#08bce8);
+  color:white;border:0;font-weight:bold
+}
+.btn:hover{filter:brightness(1.15);transform:translateY(-2px)}
+.outline{background:transparent;border:1px solid #59668a}
+.visual{
+  padding:28px;border:1px solid #5264a1;
+  border-radius:24px;background:linear-gradient(140deg,#1d2c53,#10152c);
+  box-shadow:0 25px 65px #0005;
+  animation:float 4s ease-in-out infinite
+}
+.visual-top{display:flex;justify-content:space-between;color:#b9c8e9}
+.visual h2{font-size:36px;margin:35px 0 8px}
+.visual p{font-size:14px}
+.mini-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:12px;margin-top:25px
+}
+.mini{
+  padding:15px;background:#ffffff0c;
+  border:1px solid #ffffff17;border-radius:12px
+}
+.mini strong{display:block;color:#16d9f5;font-size:24px}
+.mini small{color:#bdc9e4}
+
+/* STATS */
+.stats{background:#111a37;padding:30px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;text-align:center}
+.stats h2{color:#16d9f5;font-size:32px}
+.stats p{color:#b9c4df;font-size:14px}
+
+/* COMMON SECTIONS */
+section:not(.hero){padding:75px 0}
+.heading{text-align:center;margin-bottom:35px}
+.heading h2{font-size:36px}
+.heading p{color:#aebbd7;margin-top:8px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.about-box{
+  padding:35px;border-radius:20px;
+  background:linear-gradient(135deg,#283c75,#35205f);
+  min-height:260px;display:flex;flex-direction:column;justify-content:center
+}
+.about-box .symbol{font-size:55px;color:#19d9f5}
+.about-text p{color:#b9c4df;margin:15px 0}
+.list{list-style:none;margin:20px 0}
+.list li{margin:10px 0}
+.list li::before{content:"✓ ";color:#16d9f5;font-weight:bold}
+
+/* SERVICES */
+.services{background:#101832}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{
+  background:#0b1230;border:1px solid #29385a;
+  padding:24px;border-radius:16px;transition:.25s
+}
+.card:hover{transform:translateY(-7px);border-color:#8d65ff}
+.card .icon{font-size:32px;margin-bottom:12px}
+.card h3{margin-bottom:8px}
+.card p{font-size:14px;color:#b9c4df}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.why-card{padding:22px;border:1px solid #29385a;border-radius:14px;background:#111a37}
+.why-card h3{margin-bottom:8px}
+.why-card p{color:#b9c4df;font-size:14px}
+
+/* CONTACT */
+.contact{background:#101832}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px}
+.contact-info p{color:#b9c4df;margin:14px 0}
+form{
+  padding:25px;background:#0b1230;
+  border:1px solid #29385a;border-radius:18px
+}
+form h3{margin-bottom:18px}
+label{display:block;margin:12px 0 5px;font-size:14px}
+input,textarea,select{
+  width:100%;padding:12px;border:1px solid #344568;
+  background:#111a37;color:white;border-radius:9px
+}
+textarea{min-height:100px;resize:vertical}
+form .btn{width:100%;margin-top:18px}
+#messageStatus{margin-top:12px;color:#16d9f5;font-size:14px}
+
+/* FOOTER */
+footer{padding:25px 0;border-top:1px solid #29385a;text-align:center}
+footer p{color:#aebbd7;font-size:13px;margin-top:8px}
+#topBtn{
+  display:none;position:fixed;right:20px;bottom:20px;
+  padding:12px 16px;background:#8645ff;color:white;
+  border:0;border-radius:50%;font-size:20px
+}
+#topBtn.show{display:block}
+body.light{background:#f3f6ff;color:#17213e}
+body.light header,body.light .services,body.light .contact,
+body.light .stats,body.light .why-card,body.light .card,
+body.light form{background:#fff;color:#17213e}
+body.light .links a,body.light .hero p,body.light .about-text p,
+body.light .heading p,body.light .card p,body.light .why-card p,
+body.light .contact-info p{color:#566480}
+body.light input,body.light textarea,body.light select{
+  background:#f5f7ff;color:#17213e
+}
+body.light .visual,body.light .about-box{color:white}
+
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-10px)}
+}
+@media(max-width:750px){
+  .links{gap:10px;flex-wrap:wrap;justify-content:center}
+  .links a{font-size:13px}
+  .hero-grid,.about-grid,.why-grid,.contact-grid{grid-template-columns:1fr}
+  .hero{padding:60px 0}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .heading h2{font-size:29px}
+}
+@media(max-width:480px){
+  nav{padding:12px 0;flex-wrap:wrap}
+  .links{width:100%;order:3}
+  .logo{font-size:22px}
+  .cards{grid-template-columns:1fr}
+  h1{font-size:42px}
+  .visual h2{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+<header>
+  <nav class="container">
+    <a href="#home" class="logo">✦ Nexa<span>Core</span></a>
+    <div class="links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="theme" id="themeBtn" type="button">☼ Theme</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag">✦ DIGITAL INNOVATION AGENCY</span>
+      <h1>Build Amazing<br><span class="gradient">Digital Experiences</span></h1>
+      <p>We create modern websites and smart digital solutions that help people and businesses grow.</p>
+      <div class="actions">
+        <a href="#services" class="btn">Explore Services →</a>
+        <a href="#about" class="btn outline">Learn More</a>
+      </div>
+    </div>
+
+    <div class="visual">
+      <div class="visual-top"><span>✦ NexaCore Studio</span><span>● ● ●</span></div>
+      <h2>Ideas into<br><span class="gradient">Reality.</span></h2>
+      <p>Design. Develop. Deliver.</p>
+      <div class="mini-grid">
+        <div class="mini"><strong>01</strong><small>Creative Design</small></div>
+        <div class="mini"><strong>02</strong><small>Clean Code</small></div>
+        <div class="mini"><strong>03</strong><small>Fast Website</small></div>
+        <div class="mini"><strong>04</strong><small>Mobile Ready</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="container stats-grid">
+    <div><h2>75+</h2><p>Sample Projects</p></div>
+    <div><h2>45+</h2><p>Happy Clients</p></div>
+    <div><h2>24/7</h2><p>Digital Access</p></div>
+    <div><h2>100%</h2><p>Responsive Layout</p></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-box">
+      <div class="symbol">✦</div>
+      <h2>Technology with Purpose</h2>
+      <p>Innovation that connects creativity and technology.</p>
+    </div>
+    <div class="about-text">
+      <span class="tag">ABOUT US</span>
+      <h2 style="margin-top:15px">We are <span class="gradient">NexaCore</span></h2>
+      <p>We focus on building accessible, attractive and useful digital experiences. Our goal is to make technology simpler for everyone.</p>
+      <ul class="list">
+        <li>Modern and responsive design</li>
+        <li>Easy navigation and readable content</li>
+        <li>Privacy-conscious user experience</li>
+        <li>Clean and maintainable code</li>
+      </ul>
+      <a href="#contact" class="btn">Contact Us →</a>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="heading">
+      <span class="tag">OUR SERVICES</span>
+      <h2 style="margin-top:12px">Solutions We <span class="gradient">Provide</span></h2>
+      <p>Smart services for a modern digital world.</p>
+    </div>
+    <div class="cards">
+      <article class="card"><div class="icon">⌘</div><h3>Web Development</h3><p>Modern websites with responsive layouts and useful features.</p></article>
+      <article class="card"><div class="icon">✧</div><h3>UI/UX Design</h3><p>Simple and attractive interfaces designed for people.</p></article>
+      <article class="card"><div class="icon">⚙</div><h3>Digital Solutions</h3><p>Creative technology ideas to solve everyday problems.</p></article>
+      <article class="card"><div class="icon">🔒</div><h3>Web Security</h3><p>Security-aware design and responsible data practices.</p></article>
+      <article class="card"><div class="icon">▣</div><h3>Mobile Design</h3><p>Layouts that adapt to phones, tablets and desktops.</p></article>
+      <article class="card"><div class="icon">♧</div><h3>Support</h3><p>Organized code that is easier to maintain and improve.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="heading">
+      <span class="tag">WHY CHOOSE US</span>
+      <h2 style="margin-top:12px">Designed for <span class="gradient">Everyone</span></h2>
+    </div>
+    <div class="why-grid">
+      <article class="why-card"><h3>⚡ Performance</h3><p>Efficient code and simple visual effects for a smoother experience.</p></article>
+      <article class="why-card"><h3>♿ Accessibility</h3><p>Clear text, labelled form fields and keyboard-friendly controls.</p></article>
+      <article class="why-card"><h3>🔐 Privacy</h3><p>Clear explanations about how information is used.</p></article>
+      <article class="why-card"><h3>📱 Responsive Design</h3><p>Content adapts to different screen sizes.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-info">
+      <span class="tag">GET IN TOUCH</span>
+      <h2 style="margin-top:15px">Let's Build<br><span class="gradient">Something Great</span></h2>
+      <p>Have an idea? Fill out the form to test the contact interface.</p>
+      <p>✉ Email: Add your business email here</p>
+      <p>⌖ Location: Digital services worldwide</p>
+      <p>◷ Availability: By appointment</p>
+    </div>
+
+    <form id="contactForm">
+      <h3>Send a Message</h3>
+      <label for="name">Your Name *</label>
+      <input id="name" name="name" required maxlength="80" placeholder="Enter your name">
+
+      <label for="email">Email Address *</label>
+      <input id="email" name="email" type="email" required placeholder="Enter your email">
+
+      <label for="subject">Subject *</label>
+      <select id="subject" name="subject" required>
+        <option value="">Select a subject</option>
+        <option>Web Development</option>
+        <option>UI/UX Design</option>
+        <option>Other Enquiry</option>
+      </select>
+
+      <label for="message">Your Message *</label>
+      <textarea id="message" name="message" required maxlength="1500" placeholder="Write your message"></textarea>
+
+      <button type="submit" class="btn">Validate Message →</button>
+      <p id="messageStatus" role="status" aria-live="polite"></p>
+      <p style="font-size:12px;color:#aebbd7;margin-top:8px">Demo only: this form does not send or store messages.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <a href="#home" class="logo">✦ Nexa<span>Core</span></a>
+    <p>© <span id="year"></span> NexaCore. Digital Innovation Demo.</p>
+  </div>
+</footer>
+
+<button id="topBtn" type="button" aria-label="Back to top">↑</button>
+
+<script>
+const themeBtn = document.getElementById("themeBtn");
+
+themeBtn.addEventListener("click", function(){
+  document.body.classList.toggle("light");
+  themeBtn.textContent = document.body.classList.contains("light")
+    ? "☾ Dark Mode" : "☼ Light Mode";
+});
+
+const form = document.getElementById("contactForm");
+const statusText = document.getElementById("messageStatus");
+
+form.addEventListener("submit", function(event){
+  event.preventDefault();
+
+  if(!form.reportValidity()) return;
+
+  statusText.textContent =
+    "Form validated successfully! This demo does not send messages.";
+});
+
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", function(){
+  topBtn.classList.toggle("show", window.scrollY > 300);
+});
+
+topBtn.addEventListener("click", function(){
+  window.scrollTo({top:0,behavior:"smooth"});
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
